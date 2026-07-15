@@ -3,12 +3,14 @@ message: "If you use this code or dataset, please cite it as below."
 type: software
 title: "VNIndex Trend Prediction: Machine Learning for Vietnamese Stock Market Direction Forecasting"
 authors:
-  - family-names: "Your Last Name"
-    given-names: "Your First Name"
-    affiliation: "Your Institution"
-    orcid: "https://orcid.org/0000-0000-0000-0000"   # optional, remove if not applicable
-repository-code: "https://github.com/<your-username>/vnindex-trend-prediction"
-url: "https://github.com/<your-username>/vnindex-trend-prediction"
+  - family-names: "Ha Dien"
+    given-names: "Trung Hieu"
+    affiliation: "Vietnam-Korea University of Information and Communication Technology (VKU)"
+  - family-names: "Huynh Ngoc"
+    given-names: "Tho"
+    affiliation: "Vietnam-Korea University of Information and Communication Technology (VKU)"
+repository-code: "https://github.com/HieuDZ609/vnindex-trend-prediction"
+url: "https://github.com/HieuDZ609/vnindex-trend-prediction"
 abstract: >
   Code and results for predicting next-day VNIndex trend direction using
   Random Forest, XGBoost, and Logistic Regression with walk-forward
@@ -25,14 +27,16 @@ keywords:
   - quantitative trading
 license: MIT
 version: 1.0.0
-date-released: "2026-07-14"
+date-released: "2026-07-15"
 preferred-citation:
   type: article
   title: "Predicting Vietnamese Stock Market Trends Using Machine Learning Approaches"
   authors:
-    - family-names: "Your Last Name"
-      given-names: "Your First Name"
-      affiliation: "Your Institution"
+    - family-names: "Ha Dien"
+      given-names: "Trung Hieu"
+      affiliation: "Vietnam-Korea University of Information and Communication Technology (VKU)"
+    - family-names: "Huynh Ngoc"
+      given-names: "Tho"
+      affiliation: "Vietnam-Korea University of Information and Communication Technology (VKU)"
   year: 2026
   journal: "TBD"
-  # doi: "10.xxxx/xxxxx"   # add once available

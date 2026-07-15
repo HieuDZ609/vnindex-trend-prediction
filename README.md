@@ -76,9 +76,9 @@ The notebook reads/writes to `./data/` and `./results/` by default. A pre-comput
 If you use this code or dataset, please cite:
 
 ```bibtex
-@article{HieuDZ6092026vnindex,
+@article{krone2026vnindex,
   title   = {Predicting Vietnamese Stock Market Trends Using Machine Learning Approaches},
-  author  = {HieuDZ609},
+  author  = {Hieu, Tho},
   year    = {2026},
   journal = {TBD},
   url     = {https://github.com/HieuDZ609/vnindex-trend-prediction}
