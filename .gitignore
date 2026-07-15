@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Environments
+.venv/
+venv/
+env/
+.conda/
+
+# Colab / Google Drive artifacts
+drive/
+*.gdoc
+*.gsheet
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Secrets / credentials
+*.env
+.env.*
+*api_key*
+*.json.key
+credentials.json
+token.pickle
+
+# Large / regenerable data (keep only the processed snapshot committed on purpose)
+data/raw/
+*.h5
+*.hdf5
+
+# Model artifacts (large binary files — track via Git LFS or release assets instead)
+*.pkl
+*.joblib
+saved_models/
+
+# Logs
+*.log
