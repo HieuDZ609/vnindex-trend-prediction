@@ -45,8 +45,8 @@ FILTER_BANDS = [
 ]
 # Band "day tho" da chon truoc do tu full-sample grid search (de doi chieu)
 ORIGINAL_FULL_SAMPLE_BAND = {
-    'RF':      (0.48, 0.52),
-    'XGBoost': (0.41, 0.59),
+    'RF':      (0.42, 0.58),
+    'XGBoost': (0.38, 0.62),
     'LogReg':  (0.33, 0.67),
 }
 

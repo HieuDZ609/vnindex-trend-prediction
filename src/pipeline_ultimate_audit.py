@@ -176,7 +176,7 @@ for name in models:
 print("\n🚨 TEST 5: Mô phỏng Monte Carlo xáo trộn khối vị thế (Block-Permutation)")
 print("-" * 80)
 np.random.seed(42)
-block_size = 10  # Cắt chuỗi thành các khối 10 ngày để giữ nguyên tính liên tục của hệ thống lệnh
+block_size = 20  # Cắt chuỗi thành các khối 10 ngày để giữ nguyên tính liên tục của hệ thống lệnh
 
 for name in models:
     sigs = pred_df[f'pred_{name}_filtered'].values

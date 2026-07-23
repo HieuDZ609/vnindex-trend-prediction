@@ -1,0 +1,10 @@
+{
+  "n_estimators": 200,
+  "max_depth": 3,
+  "learning_rate": 0.05,
+  "min_child_weight": 5,
+  "subsample": 0.8,
+  "colsample_bytree": 0.7,
+  "scale_pos_weight": 1,
+  "tuned_AUC": 0.5617073676097184
+}

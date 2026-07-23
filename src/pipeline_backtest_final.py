@@ -55,8 +55,8 @@ n_days = len(pred_df)
 # ====================================================================
 # Định nghĩa các mốc đỉnh thu được từ thực nghiệm ma trận nâng cao
 best_configs = {
-    'RF':      {'band_lo': 0.48, 'band_hi': 0.52, 'label': '[0.48, 0.52]'},
-    'XGBoost': {'band_lo': 0.41, 'band_hi': 0.59, 'label': '[0.41, 0.59]'},
+    'RF':      {'band_lo': 0.42, 'band_hi': 0.58, 'label': '[0.42, 0.58]'},
+    'XGBoost': {'band_lo': 0.38, 'band_hi': 0.62, 'label': '[0.38, 0.62]'},
     'LogReg':  {'band_lo': 0.33, 'band_hi': 0.67, 'label': '[0.33, 0.67]'}
 }
 
@@ -150,10 +150,10 @@ print(f"   ➔ Permutation p-value (LogReg Net SR)   = {p_perm:.4f}")
 
 
 # ====================================================================
-# BƯỚC 5: XUẤT BẢNG KẾT QUẢ CUỐI CÙNG CHO PAPER (GRID OPTIMIZED TABLE II)
+# BƯỚC 5: XUẤT BẢNG KẾT QUẢ CUỐI CÙNG CHO PAPER (GRID OPTIMIZED TABLE III)
 # ====================================================================
 print("\n" + "="*95)
-print("📋 BẢNG TỔNG KẾT HIỆU NĂNG SAU BỘ LỌC TỐI ƯU (CẬP NHẬT TABLE II)")
+print("📋 BẢNG TỔNG KẾT HIỆU NĂNG SAU BỘ LỌC TỐI ƯU (CẬP NHẬT TABLE III)")
 print("="*95)
 print(f"{'Model / Strategy':<25} {'Band':<13} {'AUC':>6} {'Sharpe(Gross)':>15} {'Sharpe(Net)':>12} {'MaxDD':>8} {'Turn%':>7}")
 print("-" * 95)
@@ -202,6 +202,53 @@ ax.set_ylim(0.33, 0.73); ax.set_xticks(fold_nums)
 plt.tight_layout()
 plt.savefig("FINAL_PAPER_RESULTS.png", dpi=300, bbox_inches='tight')
 plt.show()
+
+# ====================================================================
+# BƯỚC 6: XUẤT ĐỒ THỊ CHUẨN PAPER — CHỈ GIỮ LẠI LOGREG VÀ BASELINES
+# ====================================================================
+print("\n🎨 Đang kết xuất đồ thị đường cong tài sản tinh gọn fig5_equity.png...")
+
+# Định nghĩa màu sắc và kiểu đường đồng bộ cho 3 đường cần giữ lại
+colors = {'LogReg': '#10B981', 'MA Cross': '#EF4444', 'Buy&Hold': '#4B5563'}
+ls_map = {'LogReg': '-', 'MA Cross': ':', 'Buy&Hold': '-.'}
+
+# Khởi tạo canvas đơn (1 dòng, 1 cột) thay vì đồ thị đôi như cũ
+fig, ax = plt.subplots(figsize=(10, 5.5))
+
+# 1. Vẽ đường chiến lược tối ưu LogReg + Filter [0.33, 0.67]
+lbl_lr = f"LogReg + Filter [0.33, 0.67] (SR={perf['LogReg']['ShNet']:.2f})"
+ax.plot(dates, equity_curves['LogReg'], color=colors['LogReg'], 
+        linestyle=ls_map['LogReg'], linewidth=2.5, label=lbl_lr)
+
+# 2. Vẽ đường baseline MA Crossover
+lbl_ma = f"MA Crossover Baseline (SR={perf['MA Cross']['ShNet']:.2f})"
+ax.plot(dates, equity_curves['MA Cross'], color=colors['MA Cross'], 
+        linestyle=ls_map['MA Cross'], linewidth=1.8, label=lbl_ma)
+
+# 3. Vẽ đường baseline Buy & Hold
+lbl_bnh = f"Buy & Hold Baseline (SR={perf['Buy&Hold']['ShNet']:.2f})"
+ax.plot(dates, equity_curves['Buy&Hold'], color=colors['Buy&Hold'], 
+        linestyle=ls_map['Buy&Hold'], linewidth=1.8, label=lbl_bnh)
+
+# Cấu hình thẩm mỹ đồ thị chuẩn bài báo khoa học
+ax.axhline(1.0, color='black', alpha=0.15, linewidth=0.8)
+ax.set_title('Cumulative Net Equity Growth Curves (Net of 0.2% TC)', fontweight='bold', fontsize=12, pad=15)
+ax.set_xlabel('Trading Horizon (Historical Years)', fontsize=11, labelpad=10)
+ax.set_ylabel('Normalized Portfolio Wealth (Base = 1.0)', fontsize=11, labelpad=10)
+ax.legend(fontsize=9, loc='upper left', frameon=True, facecolor='white', edgecolor='#BDC3C7')
+ax.grid(True, alpha=0.2, linestyle=':')
+ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))
+
+plt.tight_layout()
+
+# Đổi tên file xuất ra thành fig5_equity.png ngắn gọn đúng cấu trúc bài báo
+plt.savefig("fig5_equity.png", dpi=300, bbox_inches='tight')
+plt.show()
+
+# Giữ nguyên lệnh lưu file predictions cuối cùng của ông
+pred_df.to_csv("wfv_predictions_FINAL.csv", index=False)
+print("\n💾 Đã lưu thành công đồ thị tài sản tinh gọn: fig5_equity.png (Chuẩn 300dpi)!")
+
 
 # Lưu trữ tệp đầu ra cuối cùng
 pred_df.to_csv("wfv_predictions_FINAL.csv", index=False)
