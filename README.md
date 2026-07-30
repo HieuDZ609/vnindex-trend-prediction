@@ -35,7 +35,7 @@ vnindex-repo/
 └── src/
     ├── data_collection.py                  # Phase 1 — vnstock / yfinance data pull → VNIndex_Raw.csv
     ├── feature_engineering.py              # Phase 2 — early feature set → VNIndex_Features.csv
-    ├── feature_engineering_v4.py           # Phase 2 — final feature set (v4) → VNIndex_Features_v4.csv
+    ├── feature_engineering_v4.py           # Phase 2 — builds VNIndex_Features_v4.csv, then runs the 16-fold walk-forward training (Phase 4/5) → wfv_results_CLEAN.csv, wfv_predictions_fix_v4.csv
     ├── AUC_feature.py                      # Section IV-B — AUC ablation by feature group
     ├── ablation_image.py                   # Renders Fig. 4
     ├── pipeline_grid_filters.py            # Section III-G — filter band grid search (60 trials)
@@ -73,14 +73,28 @@ Net Sharpe values above use the full-sample optimized filter band. **On a strict
 
 ## Reproducing the results
 
+The original notebook (`notebooks/VNIndex_Trend_Prediction.ipynb`) is outdated and kept for reference only. To reproduce the results, run the scripts below **in order, from inside `src/`**, with all input/output CSV and JSON files kept in the same working directory as the scripts (the current scripts use bare filenames, not the `data/` / `results/` paths shown in the repository structure above).
+
 ```bash
 git clone https://github.com/HieuDZ609/vnindex-trend-prediction.git
-cd vnindex-trend-prediction
-pip install -r requirements.txt
-jupyter notebook notebooks/VNIndex_Trend_Prediction.ipynb
+cd vnindex-trend-prediction/src
+pip install -r ../requirements.txt
 ```
 
-The notebook reads/writes to `./data/` and `./results/` by default. A pre-computed feature file (`data/processed/VNIndex_Features_v4.csv`) is included so tables and figures can be reproduced exactly even as live market data continues to update.
+1. `data_collection.py` — pulls raw OHLCV + global market data → `VNIndex_Raw.csv`
+2. `feature_engineering.py` — builds the early feature set → `VNIndex_Features.csv`
+3. `feature_engineering_v4.py` — builds the final 68-feature set (`VNIndex_Features_v4.csv`), then runs the 16-fold walk-forward training on RF / XGBoost / LogReg → `wfv_results_CLEAN.csv`, `wfv_predictions_fix_v4.csv`
+4. `AUC_feature.py` — AUC ablation by feature group (Section IV-B)
+5. `ablation_image.py` — renders Fig. 4
+6. `pipeline_grid_filters.py` — filter band grid search, 60 trials (Section III-G)
+7. `pipeline_table3_audit.py` — recomputes Table III
+8. `pipeline_backtest_final.py` — main backtest, produces Fig. 6, `FINAL_PAPER_RESULTS.png`, Wilcoxon/permutation tests
+9. `Trading_Performance.py` — Table V, Fig. 5 (annual Sharpe ratios)
+10. `pipeline_oos_holdout_test.py` — true 9-month holdout test (Section III-H)
+11. `pipeline_dsr_calculation.py` — Deflated Sharpe Ratio (Section III-H)
+12. `pipeline_spa_hac_test.py` — Newey-West HAC / White's Reality Check (Section III-H)
+13. `pipeline_stress_test_optimized.py` — block-permutation test (Section III-H)
+14. `pipeline_ultimate_audit.py` — combines all robustness audits
 
 ## Data sources & disclaimer
 
