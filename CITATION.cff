@@ -1,22 +1,18 @@
 cff-version: 1.2.0
 message: "If you use this code or dataset, please cite it as below."
 type: software
-title: "VNIndex Trend Prediction: Machine Learning for Vietnamese Stock Market Direction Forecasting"
+title: "A Leakage-Free Evaluation Framework for Vietnamese Stock Market (VNIndex) Trend Prediction"
 authors:
-  - family-names: "Ha Dien"
-    given-names: "Trung Hieu"
+  - family-names: "Ha"
+    given-names: "Dien Trung Hieu"
     affiliation: "Vietnam-Korea University of Information and Communication Technology (VKU)"
-  - family-names: "Huynh Ngoc"
-    given-names: "Tho"
+  - family-names: "Huynh"
+    given-names: "Ngoc Tho"
     affiliation: "Vietnam-Korea University of Information and Communication Technology (VKU)"
 repository-code: "https://github.com/HieuDZ609/vnindex-trend-prediction"
 url: "https://github.com/HieuDZ609/vnindex-trend-prediction"
 abstract: >
-  Code and results for predicting next-day VNIndex trend direction using
-  Random Forest, XGBoost, and Logistic Regression with walk-forward
-  validation, feature ablation across technical/money-flow/macro-global/
-  calendar feature groups, and a transaction-cost-aware backtest with a
-  persistence filter to control turnover.
+  Predicting the daily direction of the Vietnamese stock market index (VNIndex) is a hard task. Many existing studies based on machine learning report high accuracy, but a closer look often finds data leakage — future information sneaking into the feature building or validation steps. To address these issues, we propose a leakage-free evaluation framework that (i) identifies and eliminates three common sources of data leakage, (ii) evaluates models through rolling walk-forward validation with a persistence probability filter under realistic trading costs, and (iii) performs a comprehensive feature ablation study to identify the true sources of predictability. Experimental results reveal a clear distinction between feature groups: global macroeconomic signals consistently outperform domestic technical indicators, which perform no better than random guessing once data leakage is removed. Among the evaluated models, regularized linear models combined with an optimized probability filter initially achieve the strongest risk-adjusted trading performance, substantially reducing transaction costs and drawdown. Overall, the findings demonstrate that rigorous leakage control and realistic evaluation protocols are more critical to reliable VNIndex prediction than increasing model complexity.
 keywords:
   - machine learning
   - stock market prediction
@@ -24,19 +20,18 @@ keywords:
   - Vietnam
   - walk-forward validation
   - financial time series
-  - quantitative trading
 license: MIT
 version: 1.0.0
-date-released: "2026-07-15"
+date-released: "2026-07-30"
 preferred-citation:
   type: article
-  title: "Predicting Vietnamese Stock Market Trends Using Machine Learning Approaches"
+  title: "A Leakage-Free Evaluation Framework for Vietnamese Stock Market (VNIndex) Trend Prediction"
   authors:
-    - family-names: "Ha Dien"
-      given-names: "Trung Hieu"
+    - family-names: "Ha"
+      given-names: "Dien Trung Hieu"
       affiliation: "Vietnam-Korea University of Information and Communication Technology (VKU)"
-    - family-names: "Huynh Ngoc"
-      given-names: "Tho"
+    - family-names: "Huynh"
+      given-names: "Ngoc Tho"
       affiliation: "Vietnam-Korea University of Information and Communication Technology (VKU)"
   year: 2026
   journal: "TBD"

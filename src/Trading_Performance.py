@@ -150,7 +150,7 @@ fig.suptitle('Year-by-Year Quantitative Performance Audit (Fixed Core Math Appro
              fontsize=13, fontweight='bold')
 
 # Xuất ảnh trực tiếp ra file
-output_filename = "fig6_yearly.png"
+output_filename = "fig5_yearly.png"
 plt.savefig(output_filename, dpi=300, bbox_inches='tight', facecolor='white')
 plt.close()
 

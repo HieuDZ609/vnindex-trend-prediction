@@ -247,7 +247,7 @@ plt.show()
 
 # Giữ nguyên lệnh lưu file predictions cuối cùng của ông
 pred_df.to_csv("wfv_predictions_FINAL.csv", index=False)
-print("\n💾 Đã lưu thành công đồ thị tài sản tinh gọn: fig5_equity.png (Chuẩn 300dpi)!")
+print("\n💾 Đã lưu thành công đồ thị tài sản tinh gọn: fig6_equity.png (Chuẩn 300dpi)!")
 
 
 # Lưu trữ tệp đầu ra cuối cùng

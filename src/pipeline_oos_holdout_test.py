@@ -56,7 +56,7 @@ print("=" * 78)
 
 # ============================== BUOC 1: NAP DU LIEU ==============================
 try:
-    pred_df = pd.read_csv("wfv_predictions_fix_v4.csv", parse_dates=["Date"])
+    pred_df = pd.read_csv("wfv_predictions_final.csv", parse_dates=["Date"])
     df_v4   = pd.read_csv("VNIndex_Features_v4.csv", parse_dates=["Date"])
 except FileNotFoundError:
     raise FileNotFoundError("Thieu wfv_predictions_fix_v4.csv hoac VNIndex_Features_v4.csv.")
