@@ -2,7 +2,7 @@
 pipeline_ultimate_audit.py
 ==========================
 Hệ thống kiểm toán tối hậu gồm 6 bài toán tra tấn áp lực chuyên sâu 
-dành cho file tín hiệu cuối cùng wfv_predictions_FINAL.csv.
+dành cho file tín hiệu cuối cùng wfv_predictions_final.csv.
 
 Các bài toán:
 1. Fold-by-Fold Stability (Độ bền 16 Folds)
@@ -28,9 +28,9 @@ print("====================================================================")
 # BƯỚC 0: NẠP DỮ LIỆU FINAL VÀ ĐỒNG BỘ CAUSAL RETURN
 # ====================================================================
 try:
-    pred_df = pd.read_csv("wfv_predictions_FINAL.csv", parse_dates=["Date"])
+    pred_df = pd.read_csv("wfv_predictions_final.csv", parse_dates=["Date"])
 except FileNotFoundError:
-    raise FileNotFoundError("Thiếu tệp wfv_predictions_FINAL.csv. Hãy chạy pipeline_backtest_final.py trước.")
+    raise FileNotFoundError("Thiếu tệp wfv_predictions_final.csv. Hãy chạy pipeline_backtest_final.py trước.")
 
 pred_df = pred_df.sort_values("Date").reset_index(drop=True)
 ret_next = pred_df['VN_Return'].shift(-1).fillna(0).values  # Causal T+1 Return
@@ -73,8 +73,8 @@ for name in models:
 # ====================================================================
 print("\n🚨 TEST 2: Thử nghiệm chi phí biến thiên (Transaction Cost Sensitivity)")
 print("-" * 80)
-costs_to_test = [0.000, 0.001, 0.002, 0.003, 0.005]
-print(f"{'Mô hình':<10} | {'Phí 0.0%':<10} | {'Phí 0.1%':<10} | {'Phí 0.2% (Gốc)':<15} | {'Phí 0.3%':<10} | {'Phí 0.5%':<10}")
+costs_to_test = [0.000, 0.00027, 0.001, 0.002, 0.003, 0.005]
+print(f"{'Mô hình':<10} | {'Phí 0.0%':<10} | {'Phí 0.027%':<10}(HOSE) | {'Phí 0.1%':<10} | {'Phí 0.2% (Gốc)':<15} | {'Phí 0.3%':<10} | {'Phí 0.5%':<10}")
 print("-" * 80)
 
 for name in models:

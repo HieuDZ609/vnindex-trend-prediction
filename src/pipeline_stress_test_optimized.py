@@ -2,7 +2,7 @@
 pipeline_stress_test_optimized.py
 =================================
 Hệ thống kiểm toán tối hậu dành riêng cho 3 mốc bộ lọc tối ưu (Grid Search Peak).
-Mục tiêu: Bóc trần xem mốc Sharpe 1.020, 0.734 và 0.729 là giá trị thực hay lỗi logic.
+Mục tiêu: Bóc trần xem mốc Sharpe 1.037, 0.676 và 0.805 là giá trị thực hay lỗi logic.
 
 Chạy 3 bài test: Ma trận Causal, Monte Carlo Return-Shuffling và Thống kê drawdown chi tiết.
 """

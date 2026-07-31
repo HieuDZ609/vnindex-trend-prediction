@@ -22,7 +22,7 @@ TEST B: Newey-West HAC-adjusted significance cho chien luoc dau bang
     (effective sample size) de thay ro muc do phinh to gia tao khi coi
     moi ngay la mot quan sat doc lap.
 
-Dau vao: wfv_predictions_fix_v4.csv, VNIndex_Features_v4.csv
+Dau vao: wfv_predictions_final.csv, VNIndex_Features_v4.csv
 """
 
 import pandas as pd
