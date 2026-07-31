@@ -39,9 +39,9 @@ n_days = len(pred_df)
 
 # Cấu hình đỉnh tối ưu thu được từ Grid Search
 best_configs = {
-    'RF':      {'band_lo': 0.48, 'band_hi': 0.52, 'expected_sr': 0.729},
-    'XGBoost': {'band_lo': 0.41, 'band_hi': 0.59, 'expected_sr': 0.734},
-    'LogReg':  {'band_lo': 0.33, 'band_hi': 0.67, 'expected_sr': 1.020}
+    'RF':      {'band_lo': 0.42, 'band_hi': 0.58, 'expected_sr': 0.805},
+    'XGBoost': {'band_lo': 0.38, 'band_hi': 0.62, 'expected_sr': 0.676},
+    'LogReg':  {'band_lo': 0.33, 'band_hi': 0.67, 'expected_sr': 1.037}
 }
 
 # ====================================================================
